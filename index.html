@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./dist/notify.css">
+    <link rel="stylesheet" href="style.css">
+    <title>xm-notifyjs</title>
+</head>
+<body>
+    <!--Notification Start-->
+    <div class="alert _hide" id="__al">
+        <span class="_icon fa-solid " id="_icon"></span>
+        <span class="_title" id="_txt"></span>
+        <span class="_desc" id="_dc"></span>
+    </div>
+    <!--Notification End-->
+    <button onclick="Notify('error', 'test error', 'success')">Hello</button>
+</body>
+<script>
+    // DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING
+    let noti = document.getElementById("__al")
+    let icon = document.getElementById('_icon')
+    let L = 0
+    let a = false
+    function Notify(title, description, type) {
+        if (a){
+            console.error('trigger already activated')
+        }
+        else {
+            a = true
+            document.getElementById('_txt').innerText = `${title}: `
+            document.getElementById("_dc").innerText = `${description}`
+            if (type === 'error') {
+                icon.classList.add('fa-circle-xmark')
+                noti.style.borderLeftColor = "red"
+                L = 0
+            }
+            else if (type === 'info') {
+                icon.classList.add('fa-circle-info')
+                noti.style.borderLeftColor = "blue"
+                L = 1
+            }
+            else if (type === 'success') {
+                icon.classList.add('fa-circle-check')
+                noti.style.borderLeftColor = "green"
+                L = 2
+            }
+            else {
+                icon.classList.add('fa-circle-info')
+                noti.style.borderLeftColor = "orange"
+                L = 1
+                console.error("Notify: Invalid type - reset to default")
+            }
+            noti.style.display = 'block'
+            noti.classList.remove('_hide')
+            noti.classList.add("_show")
+            setTimeout(function(){
+                noti.classList.remove('_show')
+                noti.classList.add('_hide')
+            }, 3000)
+            setTimeout(()=>{
+                noti.style.display = 'none'
+                if (L === 0) {
+                    icon.classList.remove('fa-circle-xmark')
+                }
+                if (L === 1) {
+                    icon.classList.remove('fa-circle-info')
+                }
+                if (L === 2) {
+                    icon.classList.remove('fa-circle-check')
+                }
+                a = false
+            }, 4000)
+        }
+
+    }
+    // DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING
+</script>
+</html>
