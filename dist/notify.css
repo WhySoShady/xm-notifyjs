@@ -61,3 +61,23 @@
         top: 5px;
     }   
 }
+
+/*Removes Animation*/
+@media (prefers-reduced-motion) {
+    @keyframes anim-hide {
+        from {
+            top: 5px;
+        }
+        to {
+            top: -60%;
+        }
+    }
+    @keyframes anim-show {
+        from {
+            top: -60%;
+        }
+        to {
+            top: 5px;
+        }
+    }
+}
