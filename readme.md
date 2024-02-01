@@ -92,6 +92,8 @@ function Notify(title, description, type) {
 // DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING
 ```
 
+Step 4. Download the `dist` folder and move it to your src folder
+
 You should now be able to run the function `Notify()`. The parameters are (title, description, type)
 
 types = {'error', 'info', 'success'}
