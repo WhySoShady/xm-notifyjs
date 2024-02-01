@@ -32,26 +32,28 @@
             a = true
             document.getElementById('_txt').innerText = `${title}: `
             document.getElementById("_dc").innerText = `${description}`
-            if (type === 'error') {
-                icon.classList.add('fa-circle-xmark')
-                noti.style.borderLeftColor = "red"
-                L = 0
-            }
-            else if (type === 'info') {
-                icon.classList.add('fa-circle-info')
-                noti.style.borderLeftColor = "blue"
-                L = 1
-            }
-            else if (type === 'success') {
-                icon.classList.add('fa-circle-check')
-                noti.style.borderLeftColor = "green"
-                L = 2
-            }
-            else {
-                icon.classList.add('fa-circle-info')
-                noti.style.borderLeftColor = "orange"
-                L = 1
-                console.error("Notify: Invalid type - reset to default")
+            switch (type) { // I love marginal performace enhancement!
+                case 'error':
+                    icon.classList.add('fa-circle-xmark')
+                    noti.style.borderLeftColor = "red"
+                    L = 0
+                    break;
+                case 'info':
+                    icon.classList.add('fa-circle-info')
+                    noti.style.borderLeftColor = "blue"
+                    L = 1
+                    break;
+                case 'success':
+                    icon.classList.add('fa-circle-check')
+                    noti.style.borderLeftColor = "green"
+                    L = 2
+                    break;
+                default:
+                    icon.classList.add('fa-circle-info')
+                    noti.style.borderLeftColor = "orange"
+                    L = 1
+                    console.error("Notify: Invalid type - reset to default")
+                    break;
             }
             noti.style.display = 'block'
             noti.classList.remove('_hide')
@@ -62,14 +64,19 @@
             }, 3000)
             setTimeout(()=>{
                 noti.style.display = 'none'
-                if (L === 0) {
-                    icon.classList.remove('fa-circle-xmark')
-                }
-                if (L === 1) {
-                    icon.classList.remove('fa-circle-info')
-                }
-                if (L === 2) {
-                    icon.classList.remove('fa-circle-check')
+                switch (L) {
+                    case 0:
+                        icon.classList.remove('fa-circle-xmark')
+                        break;
+                    case 1: 
+                        icon.classList.remove('fa-circle-info')
+                        break;
+                    case 2: 
+                        icon.classList.remove('fa-circle-check')
+                        break;
+                    default:
+                        icon.classList.remove('fa-circle-info')
+                        break;
                 }
                 a = false
             }, 4000)
