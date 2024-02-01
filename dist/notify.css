@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+:root {
+    --clr_def: #ffc354;
+    --clr_err: #ab1b1b;
+    --clr_suc: #5dff47;
+    --clr_inf: #47e0ff;
+    --clr_bgl: #bfbfbf;
+    --clr_bgd: #232323;
+}
 .alert {
     position: absolute;
     top: 5px;
@@ -7,11 +15,11 @@
     padding: 10px 20px;
     min-width: 300px;
     color: #fff;
-    background: #232323;
+    background: var(--clr_bgd);
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
-    border-left: 5px solid orange;
+    border-left: 5px solid var(--clr_def);
     display: none;
     font-family: 'Poppins', sans-serif;
 }
@@ -20,14 +28,23 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 20px;
+    font-size: 30px;
     padding: 5px;
+}
+
+.alert ._cctn {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .alert ._title { 
     font-weight: bold; 
-    text-align: center;
-    padding-left: 40px;
+    font-size: 24px;
+}
+
+.alert ._desc {
+    font-size: 20px;
 }
 
 .alert._hide {
