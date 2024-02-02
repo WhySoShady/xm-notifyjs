@@ -45,6 +45,7 @@
 
 .alert ._desc {
     font-size: 20px;
+    padding-left: 45px;
 }
 
 .alert._hide {
