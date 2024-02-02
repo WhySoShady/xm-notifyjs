@@ -12,11 +12,14 @@
     <!--Notification Start-->
     <div class="alert _hide" id="__al">
         <span class="_icon fa-solid " id="_icon"></span>
-        <span class="_title" id="_txt"></span>
-        <span class="_desc" id="_dc"></span>
+        <span class="_title _cctn" id="_txt"></span>
+        <span class="_desc _cctn" id="_dc"></span>
     </div>
     <!--Notification End-->
-    <button onclick="Notify('error', 'test error', 'success')">Hello</button>
+    <button onclick="Notify('Success', 'This is a success message that is way too long', 'success')">Trigger Success</button>
+    <button onclick="Notify('Error', 'Failure to use type', 't')">Trigger Real Error</button>
+    <button onclick="Notify('Info', 'Info notification', 'info')">Trigger Info</button>
+    <button onclick="Notify('Error', 'test error', 'error')">Trigger Error</button>
 </body>
 <script>
     // DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING
@@ -25,8 +28,8 @@
     let L = 0
     let a = false
     function Notify(title, description, type) {
-        if (a){
-            console.error('trigger already activated')
+        if (a) {
+            //pass
         }
         else {
             a = true
